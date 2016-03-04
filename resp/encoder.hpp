@@ -88,8 +88,8 @@ public:
     )
   {
     std::vector<buffer_t> buffers;
-    buffers.reserve(3);
-    append_size(buffers, '*', 3);
+    buffers.reserve(4);
+    append_size(buffers, '*', 4);
     append(buffers, cmd);
     append(buffers, arg1);
     append(buffers, arg2);
@@ -107,8 +107,8 @@ public:
     )
   {
     std::vector<buffer_t> buffers;
-    buffers.reserve(4);
-    append_size(buffers, '*', 4);
+    buffers.reserve(5);
+    append_size(buffers, '*', 5);
     append(buffers, cmd);
     append(buffers, arg1);
     append(buffers, arg2);
@@ -128,8 +128,8 @@ public:
     )
   {
     std::vector<buffer_t> buffers;
-    buffers.reserve(5);
-    append_size(buffers, '*', 5);
+    buffers.reserve(6);
+    append_size(buffers, '*', 6);
     append(buffers, cmd);
     append(buffers, arg1);
     append(buffers, arg2);
