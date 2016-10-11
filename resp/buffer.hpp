@@ -148,6 +148,10 @@ public:
         /// rhs is large
         if (rhs.capacity_ > capacity_)
         {
+          if (is_ref() || is_small())
+          {
+            data_ = 0;
+          }
           data_ = (char*)std::realloc(data_, rhs.capacity_);
           if (data_ == 0)
           {
@@ -172,6 +176,15 @@ public:
    * @return Holding data pointer.
    */
   char const* data() const
+  {
+    return data_;
+  }
+
+  /// Get holding data.
+  /**
+   * @return Holding data pointer.
+   */
+  char* data()
   {
     return data_;
   }
@@ -239,6 +252,7 @@ public:
     dealloc();
     capacity_ = 0;
     size_ = 0;
+    data_ = 0;
   }
 
   /// Reserve memory, may change buffer type(ref, small or large).
@@ -282,6 +296,13 @@ public:
         data_ = (char*)std::realloc(data_, capacity_);
       }
     }
+  }
+
+  /// Resize size.
+  void resize(size_t size)
+  {
+    reserve(size);
+    size_ = size;
   }
 
   /// Append other buffer's data, if self is ref, then change to small or large.
